@@ -1,0 +1,192 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dabinu.apps.recommender.Fragments.ProfileForPatient">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:id="@+id/one"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:text="Name"
+                android:gravity="top"
+                android:textColor="@android:color/holo_red_dark"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="bottom"
+                android:id="@+id/nameField"
+                android:text="loading..."
+                android:fontFamily="cursive"
+                android:paddingStart="50dp"
+                android:paddingEnd="10dp"
+                android:textSize="25sp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/two"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="7dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:text="Email"
+                android:gravity="top"
+                android:textColor="@android:color/holo_red_dark"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="bottom"
+                android:id="@+id/emailField"
+                android:text="loading..."
+                android:fontFamily="cursive"
+                android:paddingStart="50dp"
+                android:paddingEnd="10dp"
+                android:textSize="25sp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/three"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="7dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:text="Location"
+                android:gravity="top"
+                android:textColor="@android:color/holo_red_dark"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="bottom"
+                android:id="@+id/locationField"
+                android:text="loading..."
+                android:fontFamily="cursive"
+                android:paddingStart="50dp"
+                android:paddingEnd="10dp"
+                android:textSize="25sp"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/four"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="7dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:text="Condition"
+                android:gravity="top"
+                android:textColor="@android:color/holo_red_dark"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="bottom"
+                android:id="@+id/conditionField"
+                android:text="loading..."
+                android:fontFamily="cursive"
+                android:paddingStart="50dp"
+                android:paddingEnd="10dp"
+                android:textSize="25sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/five"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="7dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:text="Date of Birth"
+                android:gravity="top"
+                android:textColor="@android:color/holo_red_dark"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="bottom"
+                android:id="@+id/dobField"
+                android:text="loading..."
+                android:fontFamily="cursive"
+                android:paddingStart="50dp"
+                android:paddingEnd="10dp"
+                android:textSize="25sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Six"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="7dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:text="User ID"
+                android:gravity="top"
+                android:textColor="@android:color/holo_red_dark"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="bottom"
+                android:id="@+id/user_idField"
+                android:text="loading..."
+                android:fontFamily="cursive"
+                android:paddingStart="50dp"
+                android:paddingEnd="10dp"
+                android:textSize="25sp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#01412f</color>
+    <color name="colorAccent">#ff4081</color>
+
+    <color name="arsh">#c8161616</color>
+    <color name="mini_arsh">#4e161616</color>
+    <color name="whitish">#dedede</color>
+
+    <color name="red">#ff0000</color>
+    <color name="green">#016602</color>
+    <color name="yellow">#dabc37</color>
+</resources>

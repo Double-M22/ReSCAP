@@ -1,0 +1,218 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dabinu.apps.recommender.Fragments.ProfileForCaregiver">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/add_specialization">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/one"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:text="Name"
+                    android:gravity="top"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:gravity="bottom"
+                    android:id="@+id/nameField"
+                    android:text="loading..."
+                    android:fontFamily="cursive"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="10dp"
+                    android:textSize="25sp"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/two"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="7dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:text="Email"
+                    android:gravity="top"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:gravity="bottom"
+                    android:id="@+id/emailField"
+                    android:text="loading..."
+                    android:fontFamily="cursive"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="10dp"
+                    android:textSize="25sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/two_b"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="7dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:text="Unique Id"
+                    android:gravity="top"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:gravity="bottom"
+                    android:id="@+id/uniqueIdField"
+                    android:text="loading..."
+                    android:fontFamily="cursive"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="10dp"
+                    android:textSize="25sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/three"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="7dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:text="Location"
+                    android:gravity="top"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:gravity="bottom"
+                    android:id="@+id/locationField"
+                    android:text="loading..."
+                    android:fontFamily="cursive"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="10dp"
+                    android:textSize="25sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/six"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="7dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:text="Date of Birth"
+                    android:gravity="top"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:gravity="bottom"
+                    android:id="@+id/dobField"
+                    android:text="loading..."
+                    android:fontFamily="cursive"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="10dp"
+                    android:textSize="25sp"/>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/four"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:text="Specialization"
+                    android:id="@+id/sp"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/sp"
+                    android:id="@+id/specializationField"
+                    android:text="loading..."
+                    android:fontFamily="cursive"
+                    android:paddingStart="50dp"
+                    android:paddingEnd="10dp"
+                    android:textSize="25sp"/>
+
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/specializationFiledItems"
+                    android:layout_below="@id/sp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingStart="35dp"
+                    android:paddingEnd="10dp"
+                    android:visibility="gone"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/add_specialization"
+        android:layout_margin="10dp"
+        android:text="Add Specialization" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>

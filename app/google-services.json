@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "23171789851",
+    "firebase_url": "https://recommender-449d4.firebaseio.com",
+    "project_id": "recommender-449d4",
+    "storage_bucket": "recommender-449d4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:23171789851:android:7964b240219fe62e",
+        "android_client_info": {
+          "package_name": "com.dabinu.apps.recommender"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "23171789851-avmbk9jqtcmmef5459ddfs4uuvifovp7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dabinu.apps.recommender",
+            "certificate_hash": "344ab09b34a01c164fe2dbe85842c01e9694c012"
+          }
+        },
+        {
+          "client_id": "23171789851-dq31pi628otmsanverh0ojbq7t3up9v5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuLMRYVMHhcPcmPTjHEo16_wH8mRxYE6k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "23171789851-dq31pi628otmsanverh0ojbq7t3up9v5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

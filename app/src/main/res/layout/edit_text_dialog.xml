@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="200dp"
+    tools:context="com.dabinu.apps.recommender.Dialog.EditTextDialog"
+    android:background="@color/whitish"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:textStyle="bold"
+        android:background="@color/mini_arsh"
+        android:text="Notify Physician"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:id="@+id/patient_phy_id"
+            android:hint="Enter Physician ID"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_above="@+id/demarcation"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/demarcation"
+            android:layout_margin="5dp"
+            android:layout_centerInParent="true"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notify"
+            android:id="@+id/notifyPhy"
+            android:layout_below="@+id/demarcation"/>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:id="@+id/edit_text_dialog_progress_bar"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

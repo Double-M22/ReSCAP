@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_home"
+                android:icon="@drawable/home"
+                android:title="Home" />
+        </menu>
+    </item>
+
+
+    <menu>
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/profile"
+        android:title="Profile" />
+    </menu>
+
+
+    <item
+        android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_doctors"
+                android:icon="@drawable/doctors"
+                android:title="My doctors" />
+            <item
+                android:id="@+id/nav_communities"
+                android:icon="@drawable/communities"
+                android:title="My communities" />
+        </menu>
+    </item>
+
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_sign_out"
+                android:icon="@drawable/sign_out"
+                android:title="Sign out" />
+
+            <item
+                android:id="@+id/nav_exit"
+                android:icon="@drawable/exit"
+                android:title="Exit" />
+        </menu>
+    </item>
+
+
+</menu>

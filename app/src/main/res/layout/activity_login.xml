@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#000000"
+    tools:context="com.dabinu.apps.recommender.AuthClasses.LoginActivity">
+
+    <RelativeLayout
+        android:id="@+id/mamamat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.2"
+                android:contentDescription="@string/app_logo"
+                android:scaleType="fitXY"
+                android:src="@drawable/steth" />
+
+        </FrameLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="35dp"
+            android:layout_marginStart="35dp">
+
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="43dp"
+                android:id="@+id/emailCard"
+                app:cardCornerRadius="30dp"
+                app:cardBackgroundColor="@android:color/holo_red_dark">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    app:cardCornerRadius="30dp"
+                    app:cardBackgroundColor="#ffffff">
+
+                    <EditText
+                        android:id="@+id/textEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"
+                        android:gravity="center"
+                        android:backgroundTint="@android:color/transparent"
+                        android:singleLine="true"
+                        android:textColor="#000000"/>
+
+                </android.support.v7.widget.CardView>
+
+
+            </android.support.v7.widget.CardView>
+
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/emailCard"
+                android:id="@+id/passCard"
+                app:cardCornerRadius="30dp"
+                app:cardBackgroundColor="@android:color/holo_red_dark">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    app:cardCornerRadius="30dp"
+                    app:cardBackgroundColor="#ffffff">
+
+                    <EditText
+                        android:id="@+id/textPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:hint="@string/password"
+                        android:inputType="textPassword"
+                        android:paddingEnd="10dp"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:backgroundTint="@android:color/transparent"
+                        android:paddingStart="10dp"
+                        android:textColor="#000000"/>
+
+                </android.support.v7.widget.CardView>
+
+
+            </android.support.v7.widget.CardView>
+
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/passCard"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="30dp"
+                android:layout_marginStart="75dp"
+                android:layout_marginEnd="75dp"
+                android:id="@+id/submit"
+                app:cardBackgroundColor="@android:color/holo_red_dark">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="casual"
+                    android:text="@string/log_in"
+                    android:textAllCaps="false"
+                    android:textSize="18sp"
+                    android:textColor="#002100"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"/>
+            </android.support.v7.widget.CardView>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:id="@+id/openSignUp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/no_acc"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:fontFamily="cursive"
+            android:text="ReSCAP"
+            android:textColor="#ffffff"
+            android:textSize="57sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

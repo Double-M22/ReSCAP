@@ -1,0 +1,114 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dabinu.apps.recommender.Fragments.CommunitiesForPhysician">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/userHasNoCommunities"
+        android:visibility="gone"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You are not a part of any community"
+            android:textSize="18sp"
+            android:id="@+id/sadText"
+            android:fontFamily="casual"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Join new?"
+            android:layout_below="@+id/sadText"
+            android:layout_centerInParent="true"
+            android:id="@+id/joinNew"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:textAllCaps="false"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:id="@+id/userHasCommunities">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="13dp"
+            android:text="My communities"
+            android:id="@+id/header"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="15sp" />
+
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listOfCommunities"
+            android:layout_below="@+id/header"
+            android:layout_marginTop="7dp"
+            android:layout_marginStart="10dp">
+
+        </ListView>
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/fab"
+            android:layout_marginBottom="38dp"
+            android:layout_marginEnd="35dp"
+            android:src="@drawable/add"
+            app:backgroundTint="#fce47b" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:visibility="gone"
+        android:id="@+id/noInternetLayout">
+
+        <TextView
+            android:id="@+id/noInternetText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No internet connection"
+            android:textSize="25sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/noInternetText"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="7dp"
+            android:id="@+id/retry"
+            android:text="Retry"
+            android:textAllCaps="false" />
+
+    </RelativeLayout>
+
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:id="@+id/progressBar"/>
+
+
+</RelativeLayout>
