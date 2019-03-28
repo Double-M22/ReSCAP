@@ -52,18 +52,15 @@ public class HomeFragmentForPhysician extends android.app.Fragment{
         my_patients = getView().findViewById(R.id.patientTag);
         my_caregivers = getView().findViewById(R.id.caregiverTag);
 
-        profile.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getFragmentManager();
-                if(getFragmentManager().getBackStackEntryCount() != 0){
-                    fragmentManager.popBackStack();
-                }
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.content_main_physician, new ProfileForPhysician(), "Physician");
-                fragmentTransaction.commit();
-                ((HomeActivityPhysician) getActivity()).getSupportActionBar().setTitle("Profile");
+        profile.setOnClickListener(v -> {
+            FragmentManager fragmentManager = getFragmentManager();
+            if(getFragmentManager().getBackStackEntryCount() != 0){
+                fragmentManager.popBackStack();
             }
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.content_main_physician, new ProfileForPhysician(), "Physician");
+            fragmentTransaction.commit();
+            ((HomeActivityPhysician) getActivity()).getSupportActionBar().setTitle("Profile");
         });
 
         community.setOnClickListener(new View.OnClickListener(){
@@ -94,20 +91,17 @@ public class HomeFragmentForPhysician extends android.app.Fragment{
             }
         });
 
-        my_caregivers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Utils.list_view_tag = "Physician";
-                Utils.list_to_display_tag = "Caregivers";
-                FragmentManager fragmentManager = getFragmentManager();
-                if(getFragmentManager().getBackStackEntryCount() != 0){
-                    fragmentManager.popBackStack();
-                }
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.content_main_physician, new UsersList(), "Physician");
-                fragmentTransaction.commit();
-                ((HomeActivityPhysician) getActivity()).getSupportActionBar().setTitle("My Caregivers");
+        my_caregivers.setOnClickListener(view1 -> {
+            Utils.list_view_tag = "Physician";
+            Utils.list_to_display_tag = "Caregivers";
+            FragmentManager fragmentManager = getFragmentManager();
+            if(getFragmentManager().getBackStackEntryCount() != 0){
+                fragmentManager.popBackStack();
             }
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.content_main_physician, new PhysicianCaregiverList(), "Physician");
+            fragmentTransaction.commit();
+            ((HomeActivityPhysician) getActivity()).getSupportActionBar().setTitle("My Caregivers");
         });
 
         checkAndSet();

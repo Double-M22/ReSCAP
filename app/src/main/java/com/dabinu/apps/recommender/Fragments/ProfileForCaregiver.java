@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.dabinu.apps.recommender.Activities.HomeActivityPhysician;
 import com.dabinu.apps.recommender.Firebase_trees.CaregiverTree;
+import com.dabinu.apps.recommender.Firebase_trees.PhyCaregivers;
 import com.dabinu.apps.recommender.Firebase_trees.PhysicianTree;
 import com.dabinu.apps.recommender.Firebase_trees.UsersSecTree;
 import com.dabinu.apps.recommender.R;
@@ -83,70 +84,64 @@ public class ProfileForCaregiver extends android.app.Fragment {
         mCheckAndSetValues(mAuth, databaseReference, activity);
 
         Button button = getView().findViewById(R.id.add_specialization);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final Dialog dialog = new Dialog(getActivity());
-                dialog.setContentView(R.layout.dayalog);
-                dialog.setTitle("Add Specialization");
-                final ListView listView = dialog.findViewById(R.id.List);
-                listView.setAdapter(ArrayAdapter.createFromResource(getActivity().getApplicationContext(), R.array.populate, R.layout.show));
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        button.setOnClickListener(view12 -> {
+            final Dialog dialog = new Dialog(getActivity());
+            dialog.setContentView(R.layout.dayalog);
+            dialog.setTitle("Add Specialization");
+            final ListView listView = dialog.findViewById(R.id.List);
+            listView.setAdapter(ArrayAdapter.createFromResource(getActivity().getApplicationContext(), R.array.populate, R.layout.show));
+            listView.setOnItemClickListener((parent, view1, position, id) -> {
+                final String communityIntent = ((String) listView.getItemAtPosition(position));
+                databaseReference.child("users").child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                        final String communityIntent = ((String) listView.getItemAtPosition(position));
-                        databaseReference.child("users").child(mAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                PhysicianTree physicianTree = dataSnapshot.getValue(PhysicianTree.class);
-                                if (physicianTree != null && physicianTree.getListOfSpecialization() != null) {
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        PhysicianTree physicianTree = dataSnapshot.getValue(PhysicianTree.class);
+                        if (physicianTree != null && physicianTree.getListOfSpecialization() != null) {
 
-                                    specializationList.clear();
-                                    specializationList.addAll(physicianTree.getListOfSpecialization());
+                            specializationList.clear();
+                            specializationList.addAll(physicianTree.getListOfSpecialization());
 
-                                    if(!specializationList.isEmpty()) {
-                                        if (specializationList.contains(communityIntent)) {
-                                            Toast.makeText(getActivity(), "It is already part of your specialization", Toast.LENGTH_SHORT).show();
-                                        } else {
-                                            specializationList.add(communityIntent);
-                                            if (specializationList.contains("null"))
-                                                specializationList.remove(specializationList.indexOf("null"));
-                                            if(userTree.getUniqueId().equals("null"))
-                                                formUniqueId(communityIntent);
-                                            else {
-                                                UsersSecTree caregiverSecTree = new UsersSecTree(userTree.getName(), userTree.getUniqueId(),
-                                                        mAuth.getCurrentUser().getUid(), communityIntent);
-                                                databaseReference.child("ReSCAP Caregivers").child(communityIntent).child(userTree.getUniqueId())
-                                                        .setValue(caregiverSecTree);
-                                            }
-
-                                            databaseReference.child("users").child(mAuth.getCurrentUser().getUid()).child("listOfSpecialization").setValue(specializationList);
-                                            Toast.makeText(getActivity(), "Specialization added!", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-
-                                } else{
+                            if(!specializationList.isEmpty()) {
+                                if (specializationList.contains(communityIntent)) {
+                                    Toast.makeText(getActivity(), "It is already part of your specialization", Toast.LENGTH_SHORT).show();
+                                } else {
                                     specializationList.add(communityIntent);
-                                    formUniqueId(communityIntent);
+                                    if (specializationList.contains("null"))
+                                        specializationList.remove(specializationList.indexOf("null"));
+                                    if(userTree.getUniqueId().equals("null"))
+                                        formUniqueId(communityIntent);
+                                    else {
+                                        PhyCaregivers caregiverSecTree = new PhyCaregivers(userTree.getName(), userTree.getUniqueId(),
+                                                mAuth.getCurrentUser().getUid(), communityIntent, userTree.getMyPatients());
+                                        databaseReference.child("ReSCAP Caregivers").child(communityIntent).child(userTree.getUniqueId())
+                                                .setValue(caregiverSecTree);
+                                    }
 
                                     databaseReference.child("users").child(mAuth.getCurrentUser().getUid()).child("listOfSpecialization").setValue(specializationList);
                                     Toast.makeText(getActivity(), "Specialization added!", Toast.LENGTH_SHORT).show();
                                 }
-                                dialog.hide();
-                                listView.setVisibility(View.VISIBLE);
-//                                adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, specializationList);
-                                adapter.notifyDataSetChanged();
-                                specialization.setVisibility(View.GONE);
                             }
 
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) { }
-                        });
-                    }
-                });
+                        } else{
+                            specializationList.add(communityIntent);
+                            formUniqueId(communityIntent);
 
-                dialog.show();
-            }
+                            databaseReference.child("users").child(mAuth.getCurrentUser().getUid()).child("listOfSpecialization").setValue(specializationList);
+                            Toast.makeText(getActivity(), "Specialization added!", Toast.LENGTH_SHORT).show();
+                        }
+                        dialog.hide();
+                        listView.setVisibility(View.VISIBLE);
+//                                adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, specializationList);
+                        adapter.notifyDataSetChanged();
+                        specialization.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) { }
+                });
+            });
+
+            dialog.show();
         });
 
     }
@@ -258,7 +253,7 @@ public class ProfileForCaregiver extends android.app.Fragment {
                                                     ArrayList<String> ids = getDataList(dataSnapshot);
                                                     int id_count = ids.size();
                                                     unique_id = null;
-                                                    if(ids.isEmpty()){
+                                                    if(!ids.isEmpty()){
                                                         boolean isUnique = false;
                                                         Random r = new Random();
                                                         Set<Integer> uniqueNumbers = new HashSet<>();

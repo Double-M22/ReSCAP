@@ -22,8 +22,8 @@ public class ProfileCompleteForPatient extends AppCompatActivity{
 
 
     TextView skip, next;
-    LinearLayout locationLayout, conditionLayout;
-    Spinner locationSpinner, conditionSpinner;
+    LinearLayout conditionLayout, consentLayout;
+    Spinner conditionSpinner, consentSpinner;
     int i = 0;
     DatabaseReference databaseReference;
     FirebaseAuth mAuth;
@@ -37,13 +37,12 @@ public class ProfileCompleteForPatient extends AppCompatActivity{
         mAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        locationLayout = findViewById(R.id.locationLayout);
         conditionLayout = findViewById(R.id.conditionLayout);
-
-        locationSpinner = findViewById(R.id.spinnerForLocation);
-        locationSpinner.setAdapter(ArrayAdapter.createFromResource(getApplicationContext(), R.array.countries, android.R.layout.simple_spinner_item));
-        conditionSpinner = findViewById(R.id.spinnerForSpecialization);
-        conditionSpinner.setAdapter(ArrayAdapter.createFromResource(getApplicationContext(), R.array.expertise, android.R.layout.simple_spinner_item));
+        conditionSpinner = findViewById(R.id.spinnerForCondition);
+        consentLayout = findViewById(R.id.consentLayout);
+        consentSpinner = findViewById(R.id.spinnerForConsent);
+        conditionSpinner.setAdapter(ArrayAdapter.createFromResource(getApplicationContext(), R.array.conditions, android.R.layout.simple_spinner_item));
+        consentSpinner.setAdapter(ArrayAdapter.createFromResource(getApplicationContext(), R.array.consents, android.R.layout.simple_spinner_item));
 
         skip = findViewById(R.id.skip);
         next = findViewById(R.id.next);
@@ -51,13 +50,13 @@ public class ProfileCompleteForPatient extends AppCompatActivity{
         final ArrayList<String> details = getIntent().getStringArrayListExtra("DETAILS");
 
         switch(details.get(i)){
-            case "LOCATION":
-                locationLayout.setVisibility(View.VISIBLE);
-                conditionLayout.setVisibility(View.GONE);
-                break;
             case "CONDITION":
-                locationLayout.setVisibility(View.GONE);
+                consentLayout.setVisibility(View.GONE);
                 conditionLayout.setVisibility(View.VISIBLE);
+                break;
+            case "CONSENT":
+                conditionLayout.setVisibility(View.GONE);
+                consentLayout.setVisibility(View.VISIBLE);
                 break;
         }
 
@@ -75,19 +74,20 @@ public class ProfileCompleteForPatient extends AppCompatActivity{
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     startActivity(new Intent(getApplicationContext(), HomeActivityPatient.class));
+                                    ProfileCompleteForPatient.this.finish();
                                 }
                             })
                             .show();
                 }
                 else{
                     switch(details.get(i)){
-                        case "LOCATION":
-                            locationLayout.setVisibility(View.VISIBLE);
-                            conditionLayout.setVisibility(View.GONE);
-                            break;
                         case "CONDITION":
-                            locationLayout.setVisibility(View.GONE);
+                            consentLayout.setVisibility(View.GONE);
                             conditionLayout.setVisibility(View.VISIBLE);
+                            break;
+                        case "CONSENT":
+                            conditionLayout.setVisibility(View.GONE);
+                            consentLayout.setVisibility(View.VISIBLE);
                             break;
                     }
                 }
@@ -99,13 +99,13 @@ public class ProfileCompleteForPatient extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 switch(details.get(i)){
-                    case "LOCATION":
-                        databaseReference.child(mAuth.getCurrentUser().getUid()).child("location").setValue(((String) locationSpinner.getSelectedItem()));
-                        break;
                     case "CONDITION":
                         ArrayList<String> s = new ArrayList<>();
                         s.add(((String) conditionSpinner.getSelectedItem()));
-                        databaseReference.child(mAuth.getCurrentUser().getUid()).child("listOfConditions").setValue(s);
+                        databaseReference.child("users").child(mAuth.getCurrentUser().getUid()).child("listOfConditions").setValue(s);
+                        break;
+                    case "CONSENT":
+                        databaseReference.child("users").child(mAuth.getCurrentUser().getUid()).child("consent").setValue(consentSpinner.getSelectedItem());
                         break;
                 }
 
@@ -119,23 +119,31 @@ public class ProfileCompleteForPatient extends AppCompatActivity{
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     startActivity(new Intent(getApplicationContext(), HomeActivityPatient.class));
+                                    ProfileCompleteForPatient.this.finish();
                                 }
                             })
                             .show();
                 }
                 else{
                     switch(details.get(i)){
-                        case "LOCATION":
-                            locationLayout.setVisibility(View.VISIBLE);
-                            conditionLayout.setVisibility(View.GONE);
-                            break;
                         case "CONDITION":
-                            locationLayout.setVisibility(View.GONE);
+                            consentLayout.setVisibility(View.GONE);
                             conditionLayout.setVisibility(View.VISIBLE);
                             break;
+                        case "CONSENT":
+                            conditionLayout.setVisibility(View.GONE);
+                            consentLayout.setVisibility(View.VISIBLE);
+                            break;
+
                     }
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(), HomeActivityPatient.class));
+        ProfileCompleteForPatient.this.finish();
     }
 }

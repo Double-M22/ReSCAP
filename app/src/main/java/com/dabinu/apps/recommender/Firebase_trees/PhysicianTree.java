@@ -4,21 +4,20 @@ import java.util.ArrayList;
 
 public class PhysicianTree {
 
-    private String name, email, type, location, dateOfBirth, consent, license, affiliation, uniqueId;
+    private String name, email, type, location, dateOfBirth, license, affiliation, uniqueId;
     private ArrayList<String> listOfSpecialization, listOfCommunities;
     private ArrayList<PhyPatient> MyPatients;
-    private ArrayList<UsersSecTree> MyCareGivers;
+    private ArrayList<PhyCaregivers> MyCareGivers;
 
-    public PhysicianTree(String name, String email, String type, String location, String dateOfBirth, String consent,
+    public PhysicianTree(String name, String email, String type, String location, String dateOfBirth,
                          String uniqueId, String license, String affiliation, ArrayList<String> listOfSpecializations,
-                         ArrayList<String> listOfCommunities, ArrayList<PhyPatient> MyPatients, ArrayList<UsersSecTree> MyCareGivers){
+                         ArrayList<String> listOfCommunities, ArrayList<PhyPatient> MyPatients, ArrayList<PhyCaregivers> MyCareGivers){
 
         this.name = name;
         this.email = email;
         this.type = type;
         this.location = location;
         this.dateOfBirth = dateOfBirth;
-        this.consent = consent;
         this.uniqueId = uniqueId;
         this.license = license;
         this.affiliation = affiliation;
@@ -32,7 +31,7 @@ public class PhysicianTree {
     public PhysicianTree(){
     }
 
-    public ArrayList<UsersSecTree> getMyCareGivers() {
+    public ArrayList<PhyCaregivers> getMyCareGivers() {
         return MyCareGivers;
     }
 
@@ -50,10 +49,6 @@ public class PhysicianTree {
 
     public String getDateOfBirth() {
         return dateOfBirth;
-    }
-
-    public String getConsent() {
-        return consent;
     }
 
     public String getLicense() {

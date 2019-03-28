@@ -28,10 +28,10 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter message"
+            android:hint="@string/enter_message"
             android:inputType="text"
             android:id="@+id/entered_message"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="5dp"
             android:layout_toStartOf="@+id/message_send"/>
 
         <ImageView
@@ -39,6 +39,7 @@
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
             android:src="@drawable/send"
+            android:padding="5dp"
             android:layout_centerVertical="true"
             android:id="@+id/message_send"
             android:contentDescription="@string/send"

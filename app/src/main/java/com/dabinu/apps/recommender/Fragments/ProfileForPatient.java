@@ -106,11 +106,12 @@ public class ProfileForPatient extends android.app.Fragment {
                 progressBar.setVisibility(View.GONE);
 
                 PatientTree userTree = dataSnapshot.getValue(PatientTree.class);
-
+                String consent = "null";
 
                 if (userTree != null) {
                     name.setText(userTree.getName());
                     email.setText(userTree.getEmail());
+                    consent = userTree.getConsent();
                     if(userTree.getListOfConditions() != null)
                         condition.setText(userTree.getListOfConditions().get(0));
                     else
@@ -131,9 +132,9 @@ public class ProfileForPatient extends android.app.Fragment {
                     hereafter = true;
                     lifeAfterDeath.add("CONDITION");
                 }
-                if(location.getText().toString().trim().equals("not set yet")){
+                if(consent.equals("null")){
                     hereafter = true;
-                    lifeAfterDeath.add("LOCATION");
+                    lifeAfterDeath.add("CONSENT");
                 }
                 if(hereafter){
                     new AlertDialog.Builder(getActivity())
@@ -142,6 +143,7 @@ public class ProfileForPatient extends android.app.Fragment {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     startActivity(new Intent(getActivity().getApplicationContext(), ProfileCompleteForPatient.class).putExtra("DETAILS", lifeAfterDeath));
+                                    getActivity().finish();
                                 }
                             })
                             .setNegativeButton("Later", null)

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+    tools:text="Mike | hyhaue000"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="5dp"
+    android:textColor="#000"
+    android:layout_marginBottom="5dp"/>

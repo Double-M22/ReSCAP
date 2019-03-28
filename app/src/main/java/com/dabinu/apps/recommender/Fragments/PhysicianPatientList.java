@@ -14,7 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.dabinu.apps.recommender.Activities.HomeActivityPatient;
+import com.dabinu.apps.recommender.Activities.HomeActivityPhysician;
 import com.dabinu.apps.recommender.Adapter.PhyPatientListAdapter;
 import com.dabinu.apps.recommender.Firebase_trees.PatientTree;
 import com.dabinu.apps.recommender.Firebase_trees.PhyPatient;
@@ -40,6 +40,7 @@ public class PhysicianPatientList extends android.app.Fragment implements PhyPat
     private PhysicianTree physicianTree;
     private PhyPatientListAdapter phyPatientListAdapter;
     private RecyclerView my_patients_list;
+    private TextView message_all;
 
     public PhysicianPatientList() {
     }
@@ -67,12 +68,27 @@ public class PhysicianPatientList extends android.app.Fragment implements PhyPat
                 if(phyPatients != null){
 
                     my_patients_list = getActivity().findViewById(R.id.physician_patient_list_item);
+                    message_all = getActivity().findViewById(R.id.physician_patients_message_all);
                     my_patients_list.setVisibility(View.VISIBLE);
                     LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
                     my_patients_list.setLayoutManager(layoutManager);
                     my_patients_list.setHasFixedSize(true);
                     phyPatientListAdapter = new PhyPatientListAdapter(getActivity(), phyPatients, PhysicianPatientList.this);
                     my_patients_list.setAdapter(phyPatientListAdapter);
+
+                    message_all.setVisibility(View.VISIBLE);
+                    message_all.setOnClickListener(view1 -> {
+                        Utils.community_type = physicianTree.getUniqueId() + "_myPatients";
+
+                        FragmentManager fragmentManager = getFragmentManager();
+                        if(getFragmentManager().getBackStackEntryCount() != 0){
+                            fragmentManager.popBackStack();
+                        }
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.content_main_physician, new CommunityMessenger(), "messenger");
+                        fragmentTransaction.commit();
+                        ((HomeActivityPhysician) getActivity()).getSupportActionBar().setTitle("All Patients");
+                    });
 
                 }else {
                     TextView my_text = getActivity().findViewById(R.id.physician_patient_empty_text);
@@ -164,9 +180,9 @@ public class PhysicianPatientList extends android.app.Fragment implements PhyPat
                                 fragmentManager.popBackStack();
                             }
                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                            fragmentTransaction.replace(R.id.content_main_patient, new CommunityMessenger(), "messenger");
+                            fragmentTransaction.replace(R.id.content_main_physician, new CommunityMessenger(), "messenger");
                             fragmentTransaction.commit();
-                            ((HomeActivityPatient) getActivity()).getSupportActionBar().setTitle(patient.getName());
+                            ((HomeActivityPhysician) getActivity()).getSupportActionBar().setTitle(patient.getName());
                         }
                     })
                     .setNegativeButton("No", new DialogInterface.OnClickListener() {

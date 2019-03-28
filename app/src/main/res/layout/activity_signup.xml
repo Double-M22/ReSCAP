@@ -151,18 +151,18 @@
                             android:layout_gravity="center"
                             android:src="@drawable/profile" />
 
-                            <EditText
-                                android:id="@+id/nameField"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:hint="Full name"
-                                android:backgroundTint="@android:color/transparent"
-                                android:inputType="textPersonName"
-                                android:singleLine="true"
-                                android:textAlignment="textStart"
-                                android:paddingStart="13dp"
-                                android:paddingEnd="0dp"
-                                android:textColor="#000000" />
+                        <EditText
+                            android:id="@+id/nameField"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="Full name"
+                            android:backgroundTint="@android:color/transparent"
+                            android:inputType="textPersonName"
+                            android:singleLine="true"
+                            android:textAlignment="textStart"
+                            android:paddingStart="13dp"
+                            android:paddingEnd="0dp"
+                            android:textColor="#000000" />
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>
@@ -371,54 +371,54 @@
 
             </android.support.v7.widget.CardView>
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:id="@+id/optionConsent"
-                app:cardCornerRadius="30dp"
-                app:cardBackgroundColor="#461515">
+            <!--<android.support.v7.widget.CardView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:layout_marginTop="20dp"-->
+                <!--android:layout_marginStart="10dp"-->
+                <!--android:layout_marginEnd="10dp"-->
+                <!--android:id="@+id/optionConsent"-->
+                <!--app:cardCornerRadius="30dp"-->
+                <!--app:cardBackgroundColor="#461515">-->
 
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="2dp"
-                    app:cardCornerRadius="30dp"
-                    android:id="@+id/entireConsent"
-                    app:cardBackgroundColor="#ffffff">
+                <!--<android.support.v7.widget.CardView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_margin="2dp"-->
+                    <!--app:cardCornerRadius="30dp"-->
+                    <!--android:id="@+id/entireConsent"-->
+                    <!--app:cardBackgroundColor="#ffffff">-->
 
-                    <LinearLayout
-                        android:id="@+id/c3"
-                        android:layout_width="match_parent"
-                        android:layout_below="@+id/n2"
-                        android:paddingStart="15dp"
-                        android:paddingEnd="10dp"
-                        android:layout_height="50dp">
+                    <!--<LinearLayout-->
+                        <!--android:id="@+id/c3"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_below="@+id/n2"-->
+                        <!--android:paddingStart="15dp"-->
+                        <!--android:paddingEnd="10dp"-->
+                        <!--android:layout_height="50dp">-->
 
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_cosent_lock_black_24dp" />
+                        <!--<ImageView-->
+                            <!--android:layout_width="30dp"-->
+                            <!--android:layout_height="30dp"-->
+                            <!--android:layout_gravity="center"-->
+                            <!--android:src="@drawable/ic_cosent_lock_black_24dp" />-->
 
-                        <Spinner
-                            android:id="@+id/consent"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_marginEnd="21dp"
-                            android:layout_marginStart="21dp"
-                            android:layout_gravity="center"
-                            android:gravity="center">
+                        <!--<Spinner-->
+                            <!--android:id="@+id/consent"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="30dp"-->
+                            <!--android:layout_marginEnd="21dp"-->
+                            <!--android:layout_marginStart="21dp"-->
+                            <!--android:layout_gravity="center"-->
+                            <!--android:gravity="center">-->
 
-                        </Spinner>
+                        <!--</Spinner>-->
 
-                    </LinearLayout>
+                    <!--</LinearLayout>-->
 
-                </android.support.v7.widget.CardView>
+                <!--</android.support.v7.widget.CardView>-->
 
-            </android.support.v7.widget.CardView>
+            <!--</android.support.v7.widget.CardView>-->
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"

@@ -609,7 +609,7 @@ public class CommunitiesForPatient extends android.app.Fragment {
                                                     ArrayList<String> ids = getDataList(dataSnapshot);
                                                     int id_count = ids.size();
                                                     unique_id = null;
-                                                    if(ids.isEmpty()){
+                                                    if(!ids.isEmpty()){
                                                         boolean isUnique = false;
                                                         Random r = new Random();
                                                         Set<Integer> uniqueNumbers = new HashSet<>();

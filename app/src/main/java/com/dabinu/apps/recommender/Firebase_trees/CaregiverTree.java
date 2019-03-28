@@ -1,16 +1,15 @@
 package com.dabinu.apps.recommender.Firebase_trees;
 
-
 import java.util.ArrayList;
 
 public class CaregiverTree{
 
-    private String name, email, type, location, dateOfBirth, consent, uniqueId;
+    private String name, email, type, location, dateOfBirth, uniqueId;
     private ArrayList<String> listOfCommunities, listOfSpecialization;
     private ArrayList<UsersSecTree> myPhysicians;
     private ArrayList<UsersSecTree> myPatients;
 
-    public CaregiverTree(String name, String email, String type, String location, String dateOfBirth, String consent,
+    public CaregiverTree(String name, String email, String type, String location, String dateOfBirth,
                          String uniqueId, ArrayList<String> listOfCommunities, ArrayList<String> listOfSpecialization,
                          ArrayList<UsersSecTree> myPhysicians, ArrayList<UsersSecTree> myPatients){
 
@@ -19,7 +18,6 @@ public class CaregiverTree{
         this.type = type;
         this.location = location;
         this.dateOfBirth = dateOfBirth;
-        this.consent = consent;
         this.uniqueId = uniqueId;
         this.listOfCommunities = listOfCommunities;
         this.listOfSpecialization = listOfSpecialization;
@@ -49,10 +47,6 @@ public class CaregiverTree{
 
     public String getDateOfBirth() {
         return dateOfBirth;
-    }
-
-    public String getConsent() {
-        return consent;
     }
 
     public String getUniqueId() {

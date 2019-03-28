@@ -8,20 +8,19 @@
         android:layout_height="wrap_content"
         android:id="@+id/users_list_item"
         android:visibility="gone"
-        android:layout_alignParentTop="true"
-        android:layout_above="@+id/delegate_caregiver">
+        android:layout_alignParentTop="true">
 
     </android.support.v7.widget.RecyclerView>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delegate Caregiver"
-        android:id="@+id/delegate_caregiver"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="10dp"
-        android:visibility="gone"/>
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Delegate Caregiver"-->
+        <!--android:id="@+id/delegate_caregiver"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_margin="10dp"-->
+        <!--android:visibility="gone"/>-->
 
     <TextView
         android:layout_width="wrap_content"

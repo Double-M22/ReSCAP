@@ -27,7 +27,6 @@ import android.widget.Toast;
 import com.dabinu.apps.recommender.Activities.HomeActivityPhysician;
 import com.dabinu.apps.recommender.Activities.ProfileCompleteForPhysician;
 import com.dabinu.apps.recommender.Firebase_trees.ExceptionModel;
-import com.dabinu.apps.recommender.Firebase_trees.PhyPatient;
 import com.dabinu.apps.recommender.Firebase_trees.PhysicianSecTree;
 import com.dabinu.apps.recommender.Firebase_trees.PhysicianTree;
 import com.dabinu.apps.recommender.R;
@@ -141,9 +140,9 @@ public class CommunitiesForPhysician extends android.app.Fragment{
 
 
     public interface MyPersonalListener{
-        public void onStart();
-        public void onSuccess(DataSnapshot data, Context context, Activity activity);
-        public void onFailed(String reason);
+        void onStart();
+        void onSuccess(DataSnapshot data, Context context, Activity activity);
+        void onFailed(String reason);
     }
 
     private void mReadDataOnce(final CommunitiesForPhysician.MyPersonalListener listener, FirebaseAuth mAuth, DatabaseReference databaseReference1, final Context context, final Activity activity){
@@ -271,9 +270,9 @@ public class CommunitiesForPhysician extends android.app.Fragment{
 
 
     public interface JoiningANewCommunity{
-        public void onStart();
-        public void onSuccess(DataSnapshot data, String intendedComm);
-        public void onFailed(String reason);
+        void onStart();
+        void onSuccess(DataSnapshot data, String intendedComm);
+        void onFailed(String reason);
     }
 
     private void mReadTheData(final CommunitiesForPhysician.JoiningANewCommunity listener, FirebaseAuth mAuth, DatabaseReference databaseReference1, final String intendedComm){
@@ -307,8 +306,7 @@ public class CommunitiesForPhysician extends android.app.Fragment{
             public void onSuccess(DataSnapshot dataSnapshot, String intendedComm){
                 progressBar.setVisibility(View.GONE);
 
-                boolean continum = true, continum2 = true;
-
+                boolean continum = true;
                 physicianTree = dataSnapshot.getValue(PhysicianTree.class);
                 ArrayList<String> spec = physicianTree.getListOfSpecialization();
                 ArrayList<String> previousCommunities = physicianTree.getListOfCommunities();
@@ -458,7 +456,7 @@ public class CommunitiesForPhysician extends android.app.Fragment{
                                                     ArrayList<String> ids = getDataList(dataSnapshot);
                                                     int id_count = ids.size();
                                                     unique_id = null;
-                                                    if(ids.isEmpty()){
+                                                    if(!ids.isEmpty()){
                                                         boolean isUnique = false;
                                                         Random r = new Random();
                                                         Set<Integer> uniqueNumbers = new HashSet<>();

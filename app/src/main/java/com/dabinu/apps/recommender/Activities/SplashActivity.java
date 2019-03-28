@@ -1,6 +1,5 @@
 package com.dabinu.apps.recommender.Activities;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -21,13 +20,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-
 public class SplashActivity extends AppCompatActivity{
-
 
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -43,7 +39,6 @@ public class SplashActivity extends AppCompatActivity{
         new SplashAsyntask().execute();
 
     }
-
 
     private boolean isNetworkAvailable(){
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -74,12 +69,9 @@ public class SplashActivity extends AppCompatActivity{
                 case "noNetwork":
                     findViewById(R.id.progressBar).setVisibility(View.GONE);
                     Snackbar.make(findViewById(android.R.id.content), "No internet connection", Snackbar.LENGTH_LONG)
-                            .setAction("Try again", new View.OnClickListener(){
-                                @Override
-                                public void onClick(View v){
-                                    findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
-                                    startActivity(new Intent(getApplicationContext(), SplashActivity.class));
-                                }
+                            .setAction("Try again", v -> {
+                                findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
+                                startActivity(new Intent(getApplicationContext(), SplashActivity.class));
                             })
                             .setDuration(1200000)
                             .show();

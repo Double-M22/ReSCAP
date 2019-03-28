@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.dabinu.apps.recommender.Activities.HomeActivityPhysician;
 import com.dabinu.apps.recommender.Firebase_trees.DateTree;
 import com.dabinu.apps.recommender.Firebase_trees.ForumChatObjects;
 import com.dabinu.apps.recommender.Firebase_trees.PhysicianTree;
@@ -30,12 +29,16 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 
+//todo this crashes here
 public class CommunityMessenger extends android.app.Fragment {
 
     private EditText entered_message;
     private DatabaseReference date_ref, community_messages;
     private FirebaseAuth mAuth;
     private RecyclerView messenger_list;
+
+    private FirebaseRecyclerAdapter <ForumChatObjects, CommunityMessengerAdapterViewHolder> firebaseRecyclerAdapter;
+    private RecyclerView.AdapterDataObserver adapterDataObserver;
 
     public static final String MONTHS[] = new String[]{ "null",
             "January",
@@ -80,7 +83,7 @@ public class CommunityMessenger extends android.app.Fragment {
         date_ref = mDatabase.child("Previous_Date");
         community_messages = mDatabase.child("Community_messages");
 
-        final FirebaseRecyclerAdapter firebaseRecyclerAdapter = new FirebaseRecyclerAdapter
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter
                 <ForumChatObjects, CommunityMessengerAdapterViewHolder>(
                 ForumChatObjects.class,
                 R.layout.messenger_design,
@@ -88,8 +91,8 @@ public class CommunityMessenger extends android.app.Fragment {
                 community_messages
         ) {
             @Override
-            protected void populateViewHolder(final CommunityMessengerAdapterViewHolder viewHolder,
-                                              final ForumChatObjects model, int position) {
+            protected void populateViewHolder(CommunityMessengerAdapterViewHolder viewHolder,
+                                              ForumChatObjects model, int position) {
                 if(model.getChatPerDay() <= 1){
                     viewHolder.setMessageDate(model.getDate());
                     viewHolder.date.setVisibility(View.VISIBLE);
@@ -106,20 +109,22 @@ public class CommunityMessenger extends android.app.Fragment {
             }
         };
         messenger_list.setAdapter(firebaseRecyclerAdapter);
-        firebaseRecyclerAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+        adapterDataObserver = new RecyclerView.AdapterDataObserver() {
             @Override
             public void onItemRangeInserted(int positionStart, int itemCount) {
                 messenger_list.smoothScrollToPosition(firebaseRecyclerAdapter.getItemCount());
             }
-        });
+        };
+        firebaseRecyclerAdapter.registerAdapterDataObserver(adapterDataObserver);
 
         ImageView send = view.findViewById(R.id.message_send);
-        send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sendMessage();
-            }
-        });
+        send.setOnClickListener(view1 -> sendMessage());
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        firebaseRecyclerAdapter.unregisterAdapterDataObserver(adapterDataObserver);
     }
 
     private void sendMessage(){
@@ -132,14 +137,14 @@ public class CommunityMessenger extends android.app.Fragment {
             user_data.child("users").child(user.getUid()).addValueEventListener(new ValueEventListener(){
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot){
-                    final PhysicianTree userTree = dataSnapshot.getValue(PhysicianTree.class);
+                    final String userName = (String)dataSnapshot.child("name").getValue();
 
                     date_ref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             newPost.child("message").setValue(message);
-                            assert userTree != null;
-                            newPost.child("sanderName").setValue(userTree.getName());
+                            assert userName != null;
+                            newPost.child("sanderName").setValue(userName);
 
                             Calendar c = Calendar.getInstance();
                             int year = c.get(Calendar.YEAR);
@@ -206,12 +211,11 @@ public class CommunityMessenger extends android.app.Fragment {
     }
 
     public static class CommunityMessengerAdapterViewHolder extends RecyclerView.ViewHolder{
-
         private View view;
-        private TextView date;
-        private View date_separator;
+        public TextView date;
+        public View date_separator;
 
-        CommunityMessengerAdapterViewHolder(View itemView) {
+        public CommunityMessengerAdapterViewHolder(View itemView) {
             super(itemView);
             view = itemView;
 
@@ -219,29 +223,28 @@ public class CommunityMessenger extends android.app.Fragment {
             date_separator = view.findViewById(R.id.messenger_date_separator);
         }
 
-        private void setSenderName(String senderName){
+        public void setSenderName(String senderName){
             TextView name = view.findViewById(R.id.messenger_name);
             name.setText(senderName);
         }
 
-        private void setMessageTime(String messageTime){
+        public void setMessageTime(String messageTime){
             TextView time = view.findViewById(R.id.messenger_time);
             time.setText(messageTime);
         }
 
-        private void setMessage(String message){
+        public void setMessage(String message){
             TextView messenger_message = view.findViewById(R.id.messenger_message);
             messenger_message.setText(message);
         }
 
-        private void setSenderImage(int drawable){
+        public void setSenderImage(int drawable){
             ImageView senderImage = view.findViewById(R.id.messenger_profile);
             senderImage.setImageResource(drawable);
         }
 
-        private void setMessageDate(String messageDate){
+        public void setMessageDate(String messageDate){
             date.setText(messageDate);
         }
     }
-
 }
